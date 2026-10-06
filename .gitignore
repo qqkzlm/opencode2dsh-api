@@ -1,0 +1,15 @@
+node_modules/
+dist/
+logs/
+*.log
+*.tgz
+package-lock.json
+.DS_Store
+Thumbs.db
+.env
+.env.local
+*.local.md
+try_ssh_*.py
+deploy_*.py
+redeploy_*.py
+verify_server.py

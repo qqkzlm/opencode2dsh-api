@@ -1,0 +1,19 @@
+services:
+  opencode2dsh-api:
+    build: .
+    image: opencode2dsh-api:latest
+    container_name: opencode2dsh-api
+    restart: unless-stopped
+    ports:
+      - "${OPENCODE2DSH_PUBLIC_PORT:-8791}:8791"
+    environment:
+      OPENCODE2DSH_API_HOST: "0.0.0.0"
+      OPENCODE2DSH_API_PORT: "8791"
+      OPENCODE2DSH_API_KEY: "${OPENCODE2DSH_API_KEY:?set OPENCODE2DSH_API_KEY in .env}"
+      OPENCODE2DSH_REFRESH_SECONDS: "${OPENCODE2DSH_REFRESH_SECONDS:-300}"
+      OPENCODE2DSH_REQUEST_TIMEOUT_MS: "${OPENCODE2DSH_REQUEST_TIMEOUT_MS:-120000}"
+    volumes:
+      - opencode2dsh-logs:/data
+
+volumes:
+  opencode2dsh-logs:
